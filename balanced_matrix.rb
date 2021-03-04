@@ -1,17 +1,28 @@
 class BalancedMatrix
-  attr_reader :grid
-
   def initialize(size=0, initial=[])
     @size = size
     @data = initial
-    @grid = build_grid
   end
 
-  private
+  def make_solution!
+    if @size == 1
+      @data = [1]
+      return
+    end
 
-  def build_grid
+    if @size == 2
+      @data = [1, 0, 0, 1]
+      return
+    end
+  end
+
+  def grid
     @size.times.map do |row|
-      @size.times.map { |col| @data[(row * @size) + col] }
+      @size.times.map do |col|
+        idx = (row * @size) + col
+        # puts "Looking at index #{idx}"
+        @data[idx]
+      end
     end
   end
 end

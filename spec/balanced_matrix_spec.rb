@@ -30,4 +30,29 @@ describe BalancedMatrix do
       end
     end
   end
+
+  describe '#make_solution!' do
+    describe '1x1 grid' do
+      subject{ BalancedMatrix.new(1) }
+
+      it 'creates a solution' do
+        subject.make_solution!
+
+        expect(subject.grid).to eq([[1]])
+      end
+    end
+
+    describe '2x2 grid' do
+      subject{ BalancedMatrix.new(2) }
+
+      it 'creates a solution' do
+        subject.make_solution!
+
+        expect(subject.grid).to eq([
+                                     [1, 0],
+                                     [0, 1]
+                                   ])
+      end
+    end
+  end
 end
